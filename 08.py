@@ -12,9 +12,9 @@ if (D < 0):
     print "no x"
 
 elif (0 < D):
-    x = (-b + math.sqrt(D)) / 2 / a
-    y = (-b - math.sqrt(D)) / 2 / a
-    print "x are ", x, y
+    x1= (-b + math.sqrt(D)) / 2 / a
+    x2 = (-b - math.sqrt(D)) / 2 / a
+    print "x are ", x1, x2
 
 else:
     x = (-b + math.sqrt(D)) / 2 / a

@@ -1,7 +1,10 @@
 x = int(raw_input("x=:"))
 
+def fn1(x):
+    return x
+
 from math import *
-print sqrt(x)
+print sqrt(fn1(x))
 
 # master branch
 
