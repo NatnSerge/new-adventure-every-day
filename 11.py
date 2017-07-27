@@ -1,4 +1,4 @@
-A = raw_input("input salaries ").split(' ')
+A = map(int, raw_input("input salaries ").split(' '))
 print A
 
 x = max(A)
