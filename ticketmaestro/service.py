@@ -5,6 +5,8 @@ class BookingSystem(object):
     '''
     def __init__(self, row_count, seat_count):
         self._seats = {} # array of array containing seat data 0 - free, 1 - occupied
+        self.row_count = row_count
+        self.seat_count = seat_count
         for row in range(0,row_count):
             self._seats[row] = {}
             for seat in range(0, seat_count):
@@ -16,9 +18,19 @@ class BookingSystem(object):
 
         :param row:
         :param seat:
-        :return: True if booked False otherwise
+        :return: True if successfully booked False if already occupied
         '''
-        return False
+
+        try:
+            x = self._seats[row][seat]
+        except KeyError as x:
+            raise ValueError("value is out of range")
+
+        if x==0:
+            self._seats[row][seat] = 1
+            return True
+        else:
+            return False
 
     def book_best(self, n_seats):
         '''
@@ -27,4 +39,20 @@ class BookingSystem(object):
         :param n_seats:
         :return: list of tuples [(row, seat),]
         '''
-        return []
+        bookinglist = []
+        for row in range(0,self.row_count):
+            for seat in range(0, self.seat_count):
+                if self._seats[row][seat] == 0:
+                    self._seats[row][seat] = 1
+                    bookinglist.append((row, seat))
+
+                if len(bookinglist) == n_seats:
+                    break
+            if len(bookinglist) == n_seats:
+                break
+        if len(bookinglist) < n_seats:
+            for bookinglist[]:
+                self._seats[row][seat] = 0
+            return "error"
+
+        return bookinglist
