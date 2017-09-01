@@ -51,8 +51,16 @@ class BookingSystem(object):
             if len(bookinglist) == n_seats:
                 break
         if len(bookinglist) < n_seats:
-            for bookinglist[]:
+            for row,seat in bookinglist:
                 self._seats[row][seat] = 0
             return "error"
 
         return bookinglist
+
+    @staticmethod
+    def something_static():
+        return 123
+
+    @classmethod
+    def something_for_the_class(cls):
+        return cls

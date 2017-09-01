@@ -2,6 +2,16 @@ import unittest
 
 from ticketmaestro.service import BookingSystem
 
+def fn1():
+    return 1
+
+def decorator(f):
+    if f.func_name == 'fn2':
+        return fn1
+
+@decorator
+def fn2():
+    return 2
 
 class TestBooking(unittest.TestCase):
     def setUp(self):
@@ -30,3 +40,12 @@ class TestBooking(unittest.TestCase):
 
         odd_numbers2 = [ x for x in range(1,1000,2)]
         self.assertListEqual(odd_numbers,odd_numbers2)
+
+    def test_decorator(self):
+        self.assertEqual(fn2(),1)
+
+    def test_static_method(self):
+        self.assertEqual(BookingSystem.something_static(), 123)
+
+    def test_class_method(self):
+        self.assertEqual(BookingSystem.something_for_the_class(), BookingSystem)
